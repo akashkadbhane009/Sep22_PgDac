@@ -1,7 +1,12 @@
 import java.lang.*;
 import java.util.*;
 
-
+/* diet for male and female for weight loss ang weight gain , by giving output 
+as protein , carb and fats needed to comsume in a day .
+Adding to above you can calcualte BMI(Body Mass Index) whic will display ur BMI with ur weight 
+category.
+@006_Akash Kadbhane_jh
+*/
 
 class male{
 	double protein, carb, fats, wt ,tcal;
@@ -184,7 +189,7 @@ class bmi{
 
 }
 
-class Diet{
+public class Diet{
 	public static void main (String [] args){
 		Scanner sc = new Scanner(System.in);
 		
@@ -221,11 +226,5 @@ class Diet{
 			default :
 			break;
 		}
-	
-
-	
 	}
-
-
-
 }
