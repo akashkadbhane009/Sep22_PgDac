@@ -5,7 +5,7 @@ constructors to initialize them. Add functions like “getVolume” and “getAr
 area respectively. Instantiate two arbitrary boxes and then print their volume and surface area.
 @006_Akash_Kadbhane_JH
  */
-public class Box {
+public class BoxOops {
     //instance vairable of object
     double height , width , breath;
     //default OR parameterless constructore
