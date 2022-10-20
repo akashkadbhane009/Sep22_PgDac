@@ -13,9 +13,9 @@ abstract class Publication {
 		this.noOfPages = noOfPages;
 		this.price = price;
 		this.publisherName = publisherName;
-		setNoOfPages(noOfPages);
-		setPrice(price);
-		setPublisherName(publisherName);
+//		setNoOfPages(noOfPages);
+//		setPrice(price);
+//		setPublisherName(publisherName);
 	}
 	public int getNoOfPages() {
 		return noOfPages;
@@ -44,7 +44,7 @@ class Book extends Publication {
 	public Book(int noOfPages, int price, String publisherName, String bookName) {
 		super(noOfPages, price, publisherName);
 		this.bookName = bookName;
-		setBookName(bookName);
+		//setBookName(bookName);
 		
 	}
 
@@ -89,11 +89,20 @@ class Journal extends Publication {
 		System.out.println("No. of Pages : "+getNoOfPages());
 		System.out.println("================================================");
 	}
-	
 }
 public class LibraryOops {
 
 	public static void main(String[] args) {
+		//Publication [] list =  new Publication[10];
+		//list [count]=new book();
+		//count++;
+		//list [count]=new Journal();
+		//int a = sc.nextInt(); 
+		//ArrayList<Interger> a = new ArrayList<Interger>();
+		//a.add(a);
+		//a.remove(0);
+		//sop(get(3))
+		
 		Book b1 = new Book(123,99,"mcGrawGill","BookOfTheWeek");
 		b1.printBook();
 		Book b2 = new Book(321,88,"nirali","tech");

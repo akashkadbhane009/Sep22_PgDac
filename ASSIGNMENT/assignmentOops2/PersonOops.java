@@ -10,7 +10,7 @@ classes and their method calls.
 import java.util.*;
 
 abstract class Person{
-	public Strint type;
+	
 	private int age;
 	private double weight , height;
 	private String dateOfBirth,address;
@@ -91,7 +91,7 @@ class Empolyee extends Person{
 	
 }
 class Student extends Person{
-	int s = 0;
+	
 	String type = "Student";
 	private String name;
 	private int rollNo;
@@ -268,6 +268,7 @@ class Technician extends Empolyee{
 	void removeTechnician(int index) {
 		t1.remove(index);
 	}
+	
 	void printTechnician() {
 		for(Technician s : t1) {
 			System.out.println(s);
@@ -309,6 +310,7 @@ public class PersonOops {
 		pp1.printStudent();
 		pp2.printProfessor();
 		pp3.printTechnician();
+		//System.out.println("");
 		
 
 	}
