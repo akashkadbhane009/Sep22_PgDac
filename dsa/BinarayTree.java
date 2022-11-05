@@ -16,15 +16,30 @@ class BinarayTree{
 	}
 	public static void main(String[] args){
 		BinarayTree bt = new BinarayTree();
-		bt.creatBinarayTree();
+		//bt.creatBinarayTree();
+		bt.insert(1);
+		bt.insert(2);
+		bt.insert(3);
+		bt.insert(4);
+		bt.insert(5);
+		bt.insert(6);
+		bt.insert(7);
+		bt.insert(8);
+		bt.insert(9);
+		bt.insert(10);
+		
+		
 		bt.displayPreOrder(bt.root);
 			System.out.println();
 		bt.displayInOrder(bt.root);
 			System.out.println();
 		bt.displayPostOrder(bt.root);
 			System.out.println();
+			System.out.println(bt.root.left.data);
+		
 		
 	}
+	
 	public void creatBinarayTree(){
 		TreeNode first = new TreeNode(1);
 		TreeNode second = new TreeNode(2);
@@ -70,22 +85,20 @@ class BinarayTree{
 	}
 		public TreeNode insert(TreeNode root , int data){
 			if (root == null) {
-				root = new TreeNode(value);
+				root = new TreeNode(data);
 				return root;
 			}
 			if (data < root.data){
 				root.left = insert(root.left , data);
 			}else{
-				root.right = insert(root.right, data;			
+				root.right = insert(root.right, data);			
 			}
 			return root;
 		}
 	void delete(int key){
 		root = PrintDelete(root, key);
 	}
-	
-	
-	public Node PrintDelete(Node root, int key){
+	public TreeNode PrintDelete(TreeNode root, int key){
 		if(root == null){
 			return root;
 		}	
@@ -111,7 +124,7 @@ class BinarayTree{
 		return root;
 	}
 		
-		int minValue(Node root){
+		int minValue(TreeNode root){
 			int x = root.data;
 			while(root.left != null){
 				x = root.left.data;
