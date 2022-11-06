@@ -23,10 +23,10 @@ class SinglyLinkList{
 		sll.addAtEnd(7);
 		sll.addAtEnd(6);
 		sll.addAtEnd(7);
+		//sll.dispaly();
+		//sll.sortList();
 		sll.dispaly();
-		sll.sortList();
-		sll.dispaly();
-		sll.removeDublicate();
+		sll.removeDuplicates();
 		//sll.addAtGivenPosition(2,55);
 		//sll.loopeList();
 		sll.dispaly();
@@ -211,20 +211,6 @@ class SinglyLinkList{
 		fifth.next = sixth;
 		sixth.next = third;
 	}
-	public void removeDublicate(){//works only  when list is already sorted
-		if (head == null){
-			return;
-		}
-		ListNode current = head;
-		
-		while ( current != null && current.next != null){
-			if (current.data == current.next.data){
-				current.next = current.next.next;
-			}else{
-				current = current.next; // travas
-			}
-		}
-	}
 	public void sortList(){
 		if (head == null){
 			return;
@@ -245,5 +231,28 @@ class SinglyLinkList{
 			i = i.next;
 		}
 	}
+	public void removeDuplicates(){// current node points to the head element
+        ListNode current = head, index = null, temp = null;
+        if (head == null) {
+            return;
+        }
+        else {
+            while (current != null) { // temp node points to the previous node
+                temp = current;// index node points to node next to current
+                index = current.next;
+                while (index != null) {// checking if node of current data is// equal to index node data
+                    if (current.data == index.data) {// duplicate node is skipped
+                        temp.next = index.next;
+                    }
+                    else {// temp node points to the previous// node of index node
+                        temp = index;
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+	}
+    
 	
 }
