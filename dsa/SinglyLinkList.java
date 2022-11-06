@@ -15,15 +15,24 @@ class SinglyLinkList{
 
 		SinglyLinkList sll = new SinglyLinkList();
 		//sll.head = new ListNode(10);
-		//sll.addAtEnd(9);
-		//sll.addAtEnd(8);
-		//sll.addAtEnd(7);
+		sll.addAtEnd(9);
+		sll.addAtEnd(8);
+		sll.addAtEnd(9);
+		sll.addAtEnd(6);
+		sll.addAtEnd(8);
+		sll.addAtEnd(7);
+		sll.addAtEnd(6);
+		sll.addAtEnd(7);
+		sll.dispaly();
+		sll.sortList();
+		sll.dispaly();
+		sll.removeDublicate();
 		//sll.addAtGivenPosition(2,55);
-		sll.loopeList();
-		//sll.dispaly();
+		//sll.loopeList();
+		sll.dispaly();
 		//System.out.println("Length of the LINKLIST : "+sll.length());
 		
-		System.out.println(sll.isLoop());
+		//System.out.println(sll.isLoop());
 		//sll.dispaly(sll.reverse());
 		//sll.getMiddleNode();
 		//int NthNodeFromEnd = 2;
@@ -31,6 +40,9 @@ class SinglyLinkList{
 		//sll.getNthNode(3);
 	}
 	public void dispaly(ListNode head){
+		if (head == null){
+			return;
+		}
 		ListNode current =  head;
 		while (current != null){
 			System.out.print(current.data+"--->");
@@ -39,6 +51,9 @@ class SinglyLinkList{
 		System.out.println("null");
 	}
 	public void dispaly(){
+		if (head == null){
+			return;
+		}
 		ListNode current =  head;
 		while (current != null){
 			System.out.print(current.data+"--->");
@@ -195,6 +210,40 @@ class SinglyLinkList{
 		fourth.next = fifth;
 		fifth.next = sixth;
 		sixth.next = third;
+	}
+	public void removeDublicate(){//works only  when list is already sorted
+		if (head == null){
+			return;
+		}
+		ListNode current = head;
+		
+		while ( current != null && current.next != null){
+			if (current.data == current.next.data){
+				current.next = current.next.next;
+			}else{
+				current = current.next; // travas
+			}
+		}
+	}
+	public void sortList(){
+		if (head == null){
+			return;
+		}
+		ListNode i = head;
+		ListNode j;
+		int temp;
+		while(i != null){
+			j = i.next;
+			while(j != null){
+				if (i.data > j.data){
+					temp = i.data;
+					i.data = j.data;
+					j.data = temp;
+				}
+					j = j.next;
+			}
+			i = i.next;
+		}
 	}
 	
 }
