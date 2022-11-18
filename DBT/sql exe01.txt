@@ -1,0 +1,174 @@
+SQL Exercise 1
+1. Create the table SEMP with the following structure:-
+EMPNO CHAR(4)
+EMPNAME CHAR(20)
+BASIC FLOAT
+DEPTNO CHAR(2)
+DEPTHEAD CHAR(4)
+ create table SEMP
+    -> (empno char(4),
+    -> empname char(20),
+    -> basic float,
+    -> deptno char(2),
+    -> depthhead char(4));
+ desc semp;
++-----------+----------+------+-----+---------+-------+
+| Field     | Type     | Null | Key | Default | Extra |
++-----------+----------+------+-----+---------+-------+
+| empno     | char(4)  | YES  |     | NULL    |       |
+| empname   | char(20) | YES  |     | NULL    |       |
+| basic     | float    | YES  |     | NULL    |       |
+| deptno    | char(2)  | YES  |     | NULL    |       |
+| depthhead | char(4)  | YES  |     | NULL    |       |
++-----------+----------+------+-----+---------+-------+
+
+2. Create the table SDEPT with the following structure:-
+DEPTNO CHAR(2)
+DEPTNAME CHAR(15)
+create table SDEPT(
+    -> deptno char(2),
+    -> dwptname char(15));
+ desc sdept;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | char(2)  | YES  |     | NULL    |       |
+| dwptname | char(15) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+
+3. Insert into the SDEPT table the following values:-
+10, Development
+20, Training
+ insert into sdept values (10, "developement");
+ insert into sdept values (20, "tranning");
+ select * from sdept;
++--------+--------------+
+| deptno | deptname     |
++--------+--------------+
+| 10     | developement |
+| 20     | tranning     |
++--------+--------------+
+
+4. Insert into the SEMP table the following values:-
+0001, SUNIL, 6000, 10
+0002, HIREN, 8000, 20
+0003, ALI, 4000, 10, 0001
+0004, GEORGE, 6000, 0002
+ insert into semp values
+    -> ("0001",'sunil',6000,10,null),
+    -> ('0002','hiren',8000,'20',null),
+    -> ('003','ali',4000,'10','0001'),
+    -> ('0004','george',6000,null,'0002');
+ select * from semp;
++-------+---------+-------+--------+-----------+
+| empno | empname | basic | deptno | depthhead |
++-------+---------+-------+--------+-----------+
+| 0001  | sunil   |  6000 | 10     | NULL      |
+| 0002  | hiren   |  8000 | 20     | NULL      |
+| 003   | ali     |  4000 | 10     | 0001      |
+| 0004  | george  |  6000 | NULL   | 0002      |
++-------+---------+-------+--------+-----------+
+Create S, P, J, SPJ tables as specified below and insert a few rows in each table:-
+SUPPLIER
+(S#, Sname, Status, City)
+-
+S
+PARTS
+(P#, Pname, Color, Weight, City)
+-
+P
+PROJECTS
+(J#, Jname, City)
+-
+J
+SUPPLIER-PARTS-PROJECT
+(S#, P#, J#, Qty)
+-
+SPJ
+ create table s(
+    -> s char(2) primary key,
+    -> sname char(10),
+    -> status enum('A','NA'),
+    -> city char(15));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc s;
++--------+----------------+------+-----+---------+-------+
+| Field  | Type           | Null | Key | Default | Extra |
++--------+----------------+------+-----+---------+-------+
+| s      | char(2)        | NO   | PRI | NULL    |       |
+| sname  | char(10)       | YES  |     | NULL    |       |
+| status | enum('A','NA') | YES  |     | NULL    |       |
+| city   | char(15)       | YES  |     | NULL    |       |
++--------+----------------+------+-----+---------+-------+
+
+ create table p (
+    -> p char(2) primary key,
+    -> pname char(10),
+    -> colour char(10),
+    -> weight float,
+    -> city char(15));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc p;
++--------+----------+------+-----+---------+-------+
+| Field  | Type     | Null | Key | Default | Extra |
++--------+----------+------+-----+---------+-------+
+| p      | char(2)  | NO   | PRI | NULL    |       |
+| pname  | char(10) | YES  |     | NULL    |       |
+| colour | char(10) | YES  |     | NULL    |       |
+| weight | float    | YES  |     | NULL    |       |
+| city   | char(15) | YES  |     | NULL    |       |
++--------+----------+------+-----+---------+-------+
+create table j(
+    -> j char(2),
+    -> jname char(10),
+    -> city char(15));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc j;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| j     | char(2)  | YES  |     | NULL    |       |
+| jname | char(10) | YES  |     | NULL    |       |
+| city  | char(15) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+
+Sample data for S# column:- ‘S1’, ‘S2’, ‘S3’, etc.
+Sample data for P# column:- ‘P1’, ‘P2’, ‘P3’, etc.
+Sample data for J# column:- ‘J1’, ‘J2’, ‘J3’, etc.
+Sample data for Status column:- 10, 20, 30, etc.
+Write the SELECT queries to do the following:-
+5. Display all the data from the S table.
+>select * from s;
+
+6. Display only the S# and SNAME fields from the S table.
+>select s, sname from s;
+
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.
+>select pname , colour from p where city='london';
+
+8. Display all the Suppliers from London.
+>select * from s where city = "london";
+
+9. Display all the Suppliers from Paris or Athens.
+>select * from s where city ="paris" or city = "athens";
+ 
+10. Display all the Projects in Athens.
+>select * from p where city = 'athens';
+
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both).
+>select pname from p where weight between 12 and 14 ;
+
+12. Display all the Suppliers with a Status greater than or equal to 20.
+> select * from s where status >= 20 ;
+
+13. Display all the Suppliers except the Suppliers from London.
+>select * from s where city not like 'london';
+
+14. Display only the Cities from where the Suppliers come from.
+>select distinct(city) from s;
+
+15. Assuming that the Part Weight is in GRAMS, display the same in MILLIGRAMS and KILOGRAMS.
+>select weight*10 as miligram , weight/1000 as kilogram from p;
